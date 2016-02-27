@@ -7,6 +7,11 @@ h1 {
   text-align: center;
 }
 
+h3 {
+  font-family: sans-serif;
+  text-align: center;
+}
+
 html, body {
   height: 100%;
   margin: 0px;
@@ -21,21 +26,39 @@ section {
 }
 
 .column {
-  border: 2px solid blue;
   padding: 10px;
   float: left;
-  width: 30%;
+  width: 33%;
   height: 100%;
 }
 
 .column.left {
-  background-color: pink;
+  background-color: #ccccff;
 }
 
 .column.middle {
-  background-color: pink;
+  background-color: #ccccff;
 }
 
 .column.right {
-  background-color: pink;
+  background-color: #ccccff;
+}
+
+.card {
+  font-family: sans-serif;
+  border-radius: 10%;
+}
+
+.card.left {
+  background-color: #00ffff;
+}
+
+.card.middle {
+  background-color: #009999;
+  color: white;
+}
+
+.card.right {
+  background-color: #0066ff;
+  color: white;
 }
