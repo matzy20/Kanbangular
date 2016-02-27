@@ -1,0 +1,41 @@
+
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+}
+
+html, body {
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+section {
+  height: 100%;
+}
+
+.wrapper {
+  height: 100%;
+}
+
+.column {
+  border: 2px solid blue;
+  padding: 10px;
+  float: left;
+  width: 30%;
+  height: 100%;
+}
+
+.column.left {
+  background-color: pink;
+}
+
+.column.middle {
+  background-color: pink;
+}
+
+.column.right {
+  background-color: pink;
+}

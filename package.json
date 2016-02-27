@@ -1,0 +1,24 @@
+{
+  "name": "kanbangular",
+  "version": "1.0.0",
+  "description": "> \"The Kanban technique emerged in the late 1940s as Toyota’s reimagined approach to manufacturing and engineering. ... The system’s highly visual nature allowed teams to communicate more easily on what work needed to be done and when. It also standardized cues and refined processes, which helped to reduce waste and maximize value.\" - [via LeanKit.com](http://leankit.com/learn/kanban/kanban-board/)",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.13.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matzy20/Kanbangular.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matzy20/Kanbangular/issues"
+  },
+  "homepage": "https://github.com/matzy20/Kanbangular#readme"
+}
