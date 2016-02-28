@@ -1,29 +1,29 @@
 'use strict';
 module.exports = {
   up: function(queryInterface, Sequelize) {
-    return queryInterface.createTable('cards', {
+    return queryInterface.createTable('Cards', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      Person: {
+      person: {
         type: Sequelize.STRING
       },
-      ProjTitle: {
+      title: {
         type: Sequelize.STRING
       },
-      ProjDescrip: {
+      descrip: {
         type: Sequelize.TEXT
       },
-      CurrentStatus: {
+      currentStatus: {
         type: Sequelize.STRING
       },
-      CompletionDueDate: {
+      completionDueDate: {
         type: Sequelize.DATE
       },
-      LastUpdated: {
+      lastUpdated: {
         type: Sequelize.DATE
       },
       createdAt: {
@@ -37,6 +37,6 @@ module.exports = {
     });
   },
   down: function(queryInterface, Sequelize) {
-    return queryInterface.dropTable('cards');
+    return queryInterface.dropTable('Cards');
   }
 };

@@ -2,33 +2,34 @@ var db = require('./models');
 var express = require('express');
 var path = require('path');
 var sequelize = require ('sequelize');
+var bodyParser = require('body-parser');
 
 var app = express();
 
+app.use(bodyParser.urlencoded({extended:false}));
 app.use(express.static(path.resolve(__dirname, 'Public')));
-
-// app.use('/api', function (req, res, next){
-//   res.send("working");
-// });
 
 app.get('/api/', function (req, res){
   return db.Card.findAll({}).then(function(cards){
-    res.send('Ahem, requesting cards');
+    res.json(cards);
   });
 });
 
 app.post('/api/cards', function (req, res){
-  // return db.Card.create({
-  //   Person: req.body.Person,
-  //   ProjTitle: req.body.ProjTitle,
-  //   ProjDescrip: req.body.ProjDescrip,
-  //   CurrentStatus: req.body.CurrentStatus,
-  //   CompletionDueDate: req.body.CompletionDueDate,
-  //   LastUpdated: req.body.LastUpdated
-  // }).then(function (card){
-    res.send('Okkkk posting cards');
-  });
-// });
+  return db.Card.create({
+    person: req.body.person,
+    title: req.body.title,
+    descrip: req.body.descrip,
+    currentStatus: req.body.currentStatus,
+    completionDueDate: req.body.completionDueDate,
+    lastUpdated: req.body.lastUpdated
+  }).then(function (card){
+    res.json(card);
+  })
+    .catch(function (err){
+      console.log(err);
+    });
+});
 
 db.sequelize
   .sync()
