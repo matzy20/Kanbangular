@@ -1,35 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Kanbangular</title>
-  <link rel="stylesheet" href="/styles.css">
-</head>
-<h1>Project Organizer</h1>
-<body ng-app="myApp">
-  <section>
-    <div class="wrapper">
-      <div class="column left">
-        <h3>Objectives and Assignment</h3>
-        <div class="card left">Who's To Do's</div>
+  <head>
+    <meta charset="UTF-8">
+    <title>Kanbangular</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body ng-app="myApp">
+    <h1>Project Organizer</h1>
+    <section>
+      <div class="wrapper">
+        <div class="column left">
+          <h3>Objectives and Assignment</h3>
+          <div class="card left">Who's To Do's</div>
+        </div>
+        <div class="column middle">
+          <h3>Where You AT??!</h3>
+          <div class="card middle">Status Update</div>
+        </div>
+        <div class="column right">
+          <h3>Almost Pau?</h3>
+          <div class="card right">Completed Status</div>
+        </div>
       </div>
-      <div class="column middle">
-        <h3>Where You AT??!</h3>
-        <div class="card middle">Status Update</div>
-      </div>
-      <div class="column right">
-        <h3>Almost Pau?</h3>
-        <div class="card right">Completed Status</div>
-      </div>
-    </div>
-  </section>
+    </section>
 
     <div ng-view></div>
-    <!-- <div ng-controller="MyController"></div> -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-route.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-animate.js"></script>
-  <script src="/js/myApp.js" type="text/javascript"></script>
-  <!-- <script src="/js/controller.js" type="text/javascript"></script> -->
-</body>
+    <div ng-controller="MyController">
+      {{ cards }}
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-route.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-animate.js"></script>
+    <script src="/js/myApp.js" type="text/javascript"></script>
+    <script src="/js/controller.js" type="text/javascript"></script>
+    <script src="/js/factories.js" type="text/javascript"></script>
+  </body>
 </html>
