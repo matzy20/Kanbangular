@@ -7,28 +7,54 @@
   </head>
   <body ng-app="myApp">
     <h1>Project Organizer</h1>
+      <div ng-view></div>
+      <div ng-controller="MyController">
+      {{ card }}
     <section>
       <div class="wrapper">
         <div class="column left">
-          <h3>Objectives and Assignment</h3>
-          <div class="card left">Who's To Do's</div>
-        </div>
-        <div class="column middle">
-          <h3>Where You AT??!</h3>
-          <div class="card middle">Status Update</div>
-        </div>
-        <div class="column right">
-          <h3>Almost Pau?</h3>
-          <div class="card right">Completed Status</div>
+          <h3>Queue</h3>
+          <div>
+            <ul class="card left">
+              <li class="card left" ng-repeat="card in cards | filter: {status: status}">
+                <h4 class="card">{{ card.title }}</h4>
+                <p class="card left">{{ card.priority }}</p>
+                <p class="card left">{{ card.status }}</p>
+                <p class="card left">{{ card.createdBy }}</p>
+                <p class="card left">{{ card.assignedTo }}</p>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
+        <div class="column middle">
+          <h3>In Progress</h3>
+          <div class="card middle"></div>
+            <ul>
+              <li class="cards" ng-repeat="card in cards | filter: {status: status}">
+                <h4 class="card_title">{{ card.title }}</h4>
+                <p class="card_priority">{{ card.priority }}</p>
+                <p class="card_status">{{ card.status }}</p>
+                <p class="card_createdBy">{{ card.createdBy }}</p>
+                <p class="card_assignedTo">{{ card.assignedTo }}</p>
+              </li>
+            </ul>
+        </div>
+        <div class="column right">
+          <h3>Done</h3>
+          <div class="card right"></div>
+            <ul>
+              <li class="cards" ng-repeat="card in cards | filter: {status: status}">
+                <h4 class="card_title">{{ card.title }}</h4>
+                <p class="card_priority">{{ card.priority }}</p>
+                <p class="card_status">{{ card.status }}</p>
+                <p class="card_createdBy">{{ card.createdBy }}</p>
+                <p class="card_assignedTo">{{ card.assignedTo }}</p>
+              </li>
+            </ul>
+        </div>
     </section>
-
-    <div ng-view></div>
-    <div ng-controller="MyController">
-      {{ cards }}
-    </div>
-
+      </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-route.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-animate.js"></script>

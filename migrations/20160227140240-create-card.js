@@ -8,30 +8,25 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      person: {
-        type: Sequelize.STRING
-      },
       title: {
         type: Sequelize.STRING
       },
-      descrip: {
-        type: Sequelize.TEXT
-      },
-      currentStatus: {
+      priority: {
         type: Sequelize.STRING
       },
-      completionDueDate: {
-        type: Sequelize.DATE
+      status: {
+        type: Sequelize.STRING
       },
-      lastUpdated: {
-        type: Sequelize.DATE
+      createdBy: {
+        type: Sequelize.STRING
+      },
+      assignedTo: {
+        type: Sequelize.STRING
       },
       createdAt: {
-        allowNull: false,
         type: Sequelize.DATE
       },
       updatedAt: {
-        allowNull: false,
         type: Sequelize.DATE
       }
     });

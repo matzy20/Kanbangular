@@ -4,12 +4,29 @@ module.exports = {
   up: function (queryInterface, Sequelize) {
     return queryInterface.bulkInsert('Cards', [
       {
-        person: "Gail",
-        title: "Initial Commit",
-        descrip: "Setup Express, Database, and routes",
-        currentStatus: "Pending",
-        completionDueDate: new Date(),
-        lastUpdated: new Date(),
+        title: 'Initial Setup',
+        priority: 'High',
+        status: 'Queue',
+        createdBy: 'Gail',
+        assignedTo: 'Dave',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        title: 'Routing',
+        priority: 'Medium',
+        status: 'In Progress',
+        createdBy: 'Dave',
+        assignedTo: 'Joe',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        title: 'Create Tests',
+        priority: 'Medium',
+        status: 'In Progress',
+        createdBy: 'Joe',
+        assignedTo: 'Zaran',
         createdAt: new Date(),
         updatedAt: new Date()
       }

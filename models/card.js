@@ -1,12 +1,11 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var Card = sequelize.define('Card', {
-    person: DataTypes.STRING,
     title: DataTypes.STRING,
-    descrip: DataTypes.TEXT,
-    currentStatus: DataTypes.STRING,
-    completionDueDate: DataTypes.DATE,
-    lastUpdated: DataTypes.DATE
+    priority: DataTypes.STRING,
+    status: DataTypes.STRING,
+    createdBy: DataTypes.STRING,
+    assignedTo: DataTypes.STRING
   }, {
     classMethods: {
       associate: function(models) {

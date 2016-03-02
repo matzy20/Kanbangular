@@ -20,6 +20,10 @@ app.get('/api/cards', function (req, res){
   });
 });
 
+app.get('/api/cards/new', function (req, res, next){
+  res.redirect(302, 'templates/new-card.html');
+});
+
 app.get('/api/cards/:id', function (req, res) {
   db.Card.find({
     where: {
@@ -32,12 +36,11 @@ app.get('/api/cards/:id', function (req, res) {
 
 app.post('/api/cards', function (req, res){
   return db.Card.create({
-    person: req.body.person,
     title: req.body.title,
-    descrip: req.body.descrip,
-    currentStatus: req.body.currentStatus,
-    completionDueDate: req.body.completionDueDate,
-    lastUpdated: req.body.lastUpdated
+    priority: req.body.priority,
+    status: req.body.status,
+    createdBy: req.body.createdBy,
+    assignedTo: req.body.assignedTo
   }).then(function (card){
     res.json(card);
   })
@@ -48,12 +51,11 @@ app.post('/api/cards', function (req, res){
 
 app.put('/api/cards/edit/:id', function (req, res){
   db.Card.update({
-    person: req.body.person,
     title: req.body.title,
-    descrip: req.body.descrip,
-    currentStatus: req.body.currentStatus,
-    completionDueDate: req.body.completionDueDate,
-    lastUpdated: req.body.lastUpdated
+    priority: req.body.priority,
+    status: req.body.status,
+    createdBy: req.body.createdBy,
+    assignedTo: req.body.assignedTo
   },
   {
     where: {
