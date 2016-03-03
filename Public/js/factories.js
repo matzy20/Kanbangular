@@ -9,6 +9,15 @@ myApp.factory('CardFactory', [
           method: "GET",
           url: "/api/cards",
         });
+      },
+      postCard: function (data){
+        console.log('postCard data', data);
+        return $http.post(
+          "/api/cards",
+          data
+        ).then(function (newCard){
+          return newCard;
+        });
       }
     };
   }

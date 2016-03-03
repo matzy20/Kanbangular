@@ -1,17 +1,16 @@
 
 * {
   box-sizing: border-box;
-  background-color: #ccccff;
+  background-color: #00ffff;
 }
 
 h1 {
   text-align: center;
-  background-color: #00ffff;
 }
 
 h3 {
   font-family: sans-serif;
-  text-align: center;
+  text-align: left;
 }
 
 html, body {
@@ -35,15 +34,12 @@ section {
 }
 
 .column.left {
-  background-color: #ccccff;
 }
 
 .column.middle {
-  background-color: #ccccff;
 }
 
 .column.right {
-  background-color: #ccccff;
 }
 
 .card {
