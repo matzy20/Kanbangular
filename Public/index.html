@@ -7,16 +7,15 @@
   </head>
   <body ng-app="myApp">
     <h1>Project Organizer</h1>
-      <div ng-view></div>
       <div ng-controller="MyController">
       {{ card }}
     <section>
       <div class="wrapper">
         <div class="column left">
           <h3>Queue</h3>
-          <div>
-            <ul class="card left">
-              <li class="card left" ng-repeat="card in cards | filter: {status: status}">
+          <div class="card left">
+            <ul>
+              <li class="card left" ng-repeat="card in cards | filter: {status: 'Queue'}">
                 <h4 class="card">{{ card.title }}</h4>
                 <p class="card left">{{ card.priority }}</p>
                 <p class="card left">{{ card.status }}</p>
@@ -26,34 +25,36 @@
             </ul>
           </div>
         </div>
-      </div>
         <div class="column middle">
           <h3>In Progress</h3>
-          <div class="card middle"></div>
+          <div class="card middle">
             <ul>
-              <li class="cards" ng-repeat="card in cards | filter: {status: status}">
-                <h4 class="card_title">{{ card.title }}</h4>
-                <p class="card_priority">{{ card.priority }}</p>
-                <p class="card_status">{{ card.status }}</p>
-                <p class="card_createdBy">{{ card.createdBy }}</p>
-                <p class="card_assignedTo">{{ card.assignedTo }}</p>
+              <li class="card middle" ng-repeat="card in cards | filter: {status: 'In Progress'}">
+                <h4 class="card">{{ card.title }}</h4>
+                <p class="card middle">{{ card.priority }}</p>
+                <p class="card middle">{{ card.status }}</p>
+                <p class="card middle">{{ card.createdBy }}</p>
+                <p class="card middle">{{ card.assignedTo }}</p>
               </li>
             </ul>
+          </div>
         </div>
         <div class="column right">
           <h3>Done</h3>
-          <div class="card right"></div>
+          <div class="card right">
             <ul>
-              <li class="cards" ng-repeat="card in cards | filter: {status: status}">
-                <h4 class="card_title">{{ card.title }}</h4>
-                <p class="card_priority">{{ card.priority }}</p>
-                <p class="card_status">{{ card.status }}</p>
-                <p class="card_createdBy">{{ card.createdBy }}</p>
-                <p class="card_assignedTo">{{ card.assignedTo }}</p>
+              <li class="card right" ng-repeat="card in cards | filter: {status: 'Done'}">
+                <h4 class="card">{{ card.title }}</h4>
+                <p class="card right">{{ card.priority }}</p>
+                <p class="card right">{{ card.status }}</p>
+                <p class="card right">{{ card.createdBy }}</p>
+                <p class="card right">{{ card.assignedTo }}</p>
               </li>
             </ul>
         </div>
+      </div>
     </section>
+    <div ng-view></div>
       </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-route.js"></script>

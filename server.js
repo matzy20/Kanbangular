@@ -20,10 +20,6 @@ app.get('/api/cards', function (req, res){
   });
 });
 
-app.get('/api/cards/new', function (req, res, next){
-  res.redirect(302, 'templates/new-card.html');
-});
-
 app.get('/api/cards/:id', function (req, res) {
   db.Card.find({
     where: {

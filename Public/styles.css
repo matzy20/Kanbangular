@@ -1,7 +1,7 @@
 
 * {
   box-sizing: border-box;
-  background-color: red;
+  background-color: #ccccff;
 }
 
 h1 {
@@ -52,15 +52,13 @@ section {
 }
 
 .card.left {
-  background-color: yellow;
+  background-color: #ff6666;
 }
 
 .card.middle {
-  background-color: #009999;
-  color: white;
+  background-color: #ffff66;
 }
 
 .card.right {
-  background-color: #0066ff;
-  color: white;
+  background-color: #00ff00;
 }
