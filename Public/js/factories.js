@@ -23,9 +23,9 @@ myApp.factory('CardFactory', [
         return $http.put(
           "/api/cards/edit/" + id,
           data
-        ).then(function (inProgCard){
-          //specifying exact data we need, not entire inProgCard obj
-          return inProgCard.data;
+        ).then(function (sendToQueue, sendToInProg, sendToDone){
+          //specifying exact data we need, not entire sendToInProg obj
+          return sendToQueue.data || sendToInProg.data || sendToDone.data;
         });
       }
     };

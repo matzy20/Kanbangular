@@ -29,8 +29,8 @@
                 <p class="card left">Status: {{ card.status }}</p>
                 <p class="card left">Created By: {{ card.createdBy }}</p>
                 <p class="card left">Assigned To: {{ card.assignedTo }}</p>
-                <button type="submit" ng-click="inProgCard(card)">In Progress</button>
-                <button type="submit" ng-click="doneStatus">Done</button>
+                <button type="submit" ng-click="sendToInProg(card)">In Progress</button>
+                <button type="submit" ng-click="sendToDone(card)">Done</button>
               </li>
             </ul>
         </div>
@@ -44,6 +44,8 @@
                 <p class="card middle">Status: {{ card.status }}</p>
                 <p class="card middle">Created By: {{ card.createdBy }}</p>
                 <p class="card middle">Assigned To: {{ card.assignedTo }}</p>
+                <button type="submit" ng-click="sendToQueue(card)">Queue</button>
+                <button type="submit" ng-click="sendToDone(card)">Done</button>
               </li>
             </ul>
           </div>
@@ -58,6 +60,8 @@
                 <p class="card right">Status: {{ card.status }}</p>
                 <p class="card right">Created By: {{ card.createdBy }}</p>
                 <p class="card right">Assigned To: {{ card.assignedTo }}</p>
+                <button type="submit" ng-click="sendToQueue(card)">Queue</button>
+                <button type="submit" ng-click="sendToInProg(card)">In Progress</button>
               </li>
             </ul>
         </div>

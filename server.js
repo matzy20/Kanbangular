@@ -16,6 +16,7 @@ app.use(morgan('dev'));
 app.use(methodOverride('_method'));
 
 app.get('/api/cards', function (req, res){
+  //Card is capitalized bc it's your model
   return db.Card.findAll({}).then(function(cards){
     res.json(cards);
   });

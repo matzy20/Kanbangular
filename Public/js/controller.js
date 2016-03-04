@@ -33,15 +33,43 @@ myApp.controller('MyController', [
       }
     };
     //$event is only on forms so replaced event with passing through card
-    $scope.inProgCard = function(card){
+    $scope.sendToQueue = function(card){
+      var data = {
+          status: "Queue",
+        };
+        CardFactory.updateCard(data, card.id)
+        .then(function(sendToQueue){
+          console.log('sendToQueue', sendToQueue);
+          console.log('card ' + sendToQueue.id + ' has been updated');
+          CardFactory.getCards()
+            .then(function (cards){
+              $scope.cards = cards.data;
+            });
+        });
+    };
+    $scope.sendToInProg = function(card){
       var data = {
           status: "In Progress",
         };
         CardFactory.updateCard(data, card.id)
-        .then(function(inProgCard){
-          console.log('inProgCard', inProgCard);
-          console.log('card ' + inProgCard.id + ' has been updated');
+        .then(function(sendToInProg){
+          console.log('sendToInProg', sendToInProg);
+          console.log('card ' + sendToInProg.id + ' has been updated');
           //copy/paste from top to set cards after being updated, so no cards are added, just updated
+          CardFactory.getCards()
+            .then(function (cards){
+              $scope.cards = cards.data;
+            });
+        });
+    };
+    $scope.sendToDone = function(card){
+      var data = {
+          status: "Done",
+        };
+        CardFactory.updateCard(data, card.id)
+        .then(function(sendToDone){
+          console.log('sendToDone', sendToDone);
+          console.log('card ' + sendToDone.id + ' has been updated');
           CardFactory.getCards()
             .then(function (cards){
               $scope.cards = cards.data;
