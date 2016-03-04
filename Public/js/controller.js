@@ -21,9 +21,8 @@ myApp.controller('MyController', [
         };
         CardFactory.postCard(data)
         .then(function (newCard){
-
           console.log('new card created');
-          //creates a refresh on Submit
+          //page updates without having to refresh
           $scope.cards = $scope.cards.concat(newCard.data);
           //after pushing newCard resets fields back to empty string
           $scope.title = '';
@@ -32,6 +31,22 @@ myApp.controller('MyController', [
           $scope.assignedTo = '';
         });
       }
+    };
+    //$event is only on forms so replaced event with passing through card
+    $scope.inProgCard = function(card){
+      var data = {
+          status: "In Progress",
+        };
+        CardFactory.updateCard(data, card.id)
+        .then(function(inProgCard){
+          console.log('inProgCard', inProgCard);
+          console.log('card ' + inProgCard.id + ' has been updated');
+          //copy/paste from top to set cards after being updated, so no cards are added, just updated
+          CardFactory.getCards()
+            .then(function (cards){
+              $scope.cards = cards.data;
+            });
+        });
     };
   }
 ]);

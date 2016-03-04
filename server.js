@@ -32,7 +32,8 @@ app.get('/api/cards/:id', function (req, res) {
 });
 
 app.post('/api/cards', function (req, res){
-  console.log('req obj', req);
+  //this console showed us an {}, helped us debug
+  // console.log('req obj', req);
   return db.Card.create({
     title: req.body.title,
     priority: req.body.priority,
@@ -61,8 +62,11 @@ app.put('/api/cards/edit/:id', function (req, res){
     },
     returning: true
   }
-  ).then(function (card){
-    res.json(card);
+  ).then(function (results){
+    //see sequelize docs http://docs.sequelizejs.com/en/latest/api/model/#updatevalues-options-promisearrayaffectedcount-affectedrows
+    //due to two promise items 'affectedCount' and 'affectedRows', need [1][0]
+    //bc we need the first [] of second []
+    res.json(results[1][0]);
   });
 });
 

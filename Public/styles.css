@@ -22,6 +22,12 @@ section {
   height: 100%;
 }
 
+button {
+  background-color: white;
+  border-radius: 20%;
+  font-weight: bold;
+}
+
 .wrapper {
   height: 100%;
 }
@@ -44,11 +50,10 @@ section {
 
 .card {
   font-family: sans-serif;
-  border-radius: 10%;
 }
 
 .card.left {
-  background-color: #ff6666;
+  background-color: #ff5050;
 }
 
 .card.middle {
