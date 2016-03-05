@@ -77,12 +77,13 @@ myApp.controller('MyController', [
       });
     };
     $scope.remove = function(card){
+      //ok to define data here with placeholder props
       var data = {
         title: $scope.title,
         priority: $scope.priority,
         createdBy: $scope.createdBy,
       };
-      //be sure to include both parameters provided in method in factory .. deleteCard
+      //be sure to include BOTH parameters provided in method in factory, which is deleteCard
       CardFactory.deleteCard(data, card.id)
       .then(function(remove){
         CardFactory.getCards()
@@ -90,6 +91,7 @@ myApp.controller('MyController', [
             $scope.cards = cards.data;
           });
       });
+      //TODO: work on creating a err message/<div> to speak with factory-server
     };
   }
 ]);

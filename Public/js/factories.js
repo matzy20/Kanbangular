@@ -29,15 +29,13 @@ myApp.factory('CardFactory', [
         });
       },
       deleteCard: function (data, id){
-        console.log('id', id);
+        console.log('deleted id: ', id);
         return $http.delete(
           "/api/cards/delete/" + id,
           data
-        ).then(function (remove){
-          console.log('data in deleteCard', data);
-          // return remove.data;
-        });
-      },
+        );
+      //QUESTION: best prac to remove success return function? yes, good to create err handlers also though
+      }
     };
   }
 ]);
