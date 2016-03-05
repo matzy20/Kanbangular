@@ -37,44 +37,59 @@ myApp.controller('MyController', [
       var data = {
           status: "Queue",
         };
-        CardFactory.updateCard(data, card.id)
-        .then(function(sendToQueue){
-          console.log('sendToQueue', sendToQueue);
-          console.log('card ' + sendToQueue.id + ' has been updated');
-          CardFactory.getCards()
-            .then(function (cards){
-              $scope.cards = cards.data;
-            });
-        });
+      CardFactory.updateCard(data, card.id)
+      .then(function(sendToQueue){
+        console.log('sendToQueue', sendToQueue);
+        console.log('card ' + sendToQueue.id + ' has been updated');
+        CardFactory.getCards()
+          .then(function (cards){
+            $scope.cards = cards.data;
+          });
+      });
     };
     $scope.sendToInProg = function(card){
       var data = {
           status: "In Progress",
         };
-        CardFactory.updateCard(data, card.id)
-        .then(function(sendToInProg){
-          console.log('sendToInProg', sendToInProg);
-          console.log('card ' + sendToInProg.id + ' has been updated');
-          //copy/paste from top to set cards after being updated, so no cards are added, just updated
-          CardFactory.getCards()
-            .then(function (cards){
-              $scope.cards = cards.data;
-            });
-        });
+      CardFactory.updateCard(data, card.id)
+      .then(function(sendToInProg){
+        console.log('sendToInProg', sendToInProg);
+        console.log('card ' + sendToInProg.id + ' has been updated');
+        //copy/pasted from top to set cards after being updated, so no cards are added, just updated
+        CardFactory.getCards()
+          .then(function (cards){
+            $scope.cards = cards.data;
+          });
+      });
     };
     $scope.sendToDone = function(card){
       var data = {
           status: "Done",
         };
-        CardFactory.updateCard(data, card.id)
-        .then(function(sendToDone){
-          console.log('sendToDone', sendToDone);
-          console.log('card ' + sendToDone.id + ' has been updated');
-          CardFactory.getCards()
-            .then(function (cards){
-              $scope.cards = cards.data;
-            });
-        });
+      CardFactory.updateCard(data, card.id)
+      .then(function(sendToDone){
+        console.log('sendToDone', sendToDone);
+        console.log('card ' + sendToDone.id + ' has been updated');
+        CardFactory.getCards()
+          .then(function (cards){
+            $scope.cards = cards.data;
+          });
+      });
+    };
+    $scope.remove = function(card){
+      var data = {
+        title: $scope.title,
+        priority: $scope.priority,
+        createdBy: $scope.createdBy,
+      };
+      //be sure to include both parameters provided in method in factory .. deleteCard
+      CardFactory.deleteCard(data, card.id)
+      .then(function(remove){
+        CardFactory.getCards()
+          .then(function (cards){
+            $scope.cards = cards.data;
+          });
+      });
     };
   }
 ]);

@@ -27,7 +27,17 @@ myApp.factory('CardFactory', [
           //specifying exact data we need, not entire sendToInProg obj
           return sendToQueue.data || sendToInProg.data || sendToDone.data;
         });
-      }
+      },
+      deleteCard: function (data, id){
+        console.log('id', id);
+        return $http.delete(
+          "/api/cards/delete/" + id,
+          data
+        ).then(function (remove){
+          console.log('data in deleteCard', data);
+          // return remove.data;
+        });
+      },
     };
   }
 ]);
