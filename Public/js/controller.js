@@ -5,9 +5,6 @@ myApp.controller('MyController', [
   'CardFactory',
   function ($scope, CardFactory) {
     $scope.cards = [];
-    $scope.user = {
-      name: 'awesome user'
-    };
     CardFactory.getCards()
       .then(function (cards){
         $scope.cards = cards.data;
@@ -18,9 +15,9 @@ myApp.controller('MyController', [
         var data = {
           title: $scope.title,
           priority: $scope.priority,
+          status: "Queue",
           createdBy: $scope.createdBy,
           assignedTo: $scope.assignedTo,
-          status: "Queue"
         };
         CardFactory.postCard(data)
         .then(function (newCard){
@@ -35,23 +32,7 @@ myApp.controller('MyController', [
         });
       }
     };
-    $scope.editingCard = function (card){
-      event.preventDefault();
-      var data = {
-          title: $scope.title,
-          priority: $scope.priority,
-          createdBy: $scope.createdBy,
-          assignedTo: $scope.assignedTo,
-          status: $scope.status,
-        };
-      CardFactory.editCard(data, id)
-      .then(function (editingCard){
-        CardFactory.getCards()
-          .then(function (cards){
-            $scope.cards = cards.data;
-          });
-      });
-    };
+
     //$event is only on forms so replaced event with passing through card
     $scope.sendToQueue = function (card){
       var data = {
@@ -112,6 +93,40 @@ myApp.controller('MyController', [
           });
       });
       //TODO: work on creating a err message/<div> to speak with factory-server
+    };
+  }
+]);
+
+myApp.controller('EditController', [
+  '$scope',
+  '$routeParams',
+  'CardFactory',
+  '$location',
+  function ($scope, $routeParams, CardFactory, $location) {
+    CardFactory.getCardById($routeParams.id)
+      .then(function (res){
+        var card = res.data;
+        $scope.title = card.title;
+        $scope.priority = card.priority;
+        $scope.status = card.status;
+        $scope.createdBy = card.createdBy;
+        $scope.assignedTo = card.assignedTo;
+      });
+    console.log('$routeParams', $routeParams);
+    $scope.editingCard = function (event){
+      var data = {
+          title: $scope.title,
+          priority: $scope.priority,
+          status: $scope.status,
+          createdBy: $scope.createdBy,
+          assignedTo: $scope.assignedTo,
+        };
+        console.log('event', event);
+      event.preventDefault();
+      CardFactory.updateCard(data, $routeParams.id)
+      .then(function (editingCard){
+        $location.path('/');
+      });
     };
   }
 ]);

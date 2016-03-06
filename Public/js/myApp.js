@@ -15,7 +15,7 @@ myApp
     })
     .when('/:id/edit', {
       templateUrl: '/templates/edit.html',
-      controller: 'MyController'
+      controller: 'EditController'
     });
   })
   .run([

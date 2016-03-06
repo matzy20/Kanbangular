@@ -1,4 +1,9 @@
 <h3>Editing card ... </h3>
-  <form>
-
+  <form ng-submit="editingCard($event)">
+    <div>Title<input type="text" ng-model="title" name="title"/></div>
+    <div>Priority<input type="text" ng-model="priority" name="priority"/></div>
+    <div>Status<input type="text" ng-model="status" name="status"/></div>
+    <div>Created By<input type="text" ng-model="createdBy" name="createdBy"/></div>
+    <div>Assigned To<input type="text" ng-model="assignedTo" name="assignedTo"/></div>
+    <div><input type="submit" id="submit" value="Save"/></div>
   </form>

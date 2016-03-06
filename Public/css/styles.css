@@ -25,9 +25,13 @@ section {
 }
 
 button, a {
-  background-color: white;
+  background-color: yellow;
   border-radius: 20%;
   font-weight: bold;
+}
+
+input {
+  background-color: white;
 }
 
 .wrapper {

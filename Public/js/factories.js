@@ -10,6 +10,12 @@ myApp.factory('CardFactory', [
           url: "/api/cards",
         });
       },
+      getCardById: function (id){
+        return $http({
+          method: "GET",
+          url: "/api/cards/" + id,
+        });
+      },
       postCard: function (data){
         return $http.post(
           "/api/cards",
@@ -23,17 +29,8 @@ myApp.factory('CardFactory', [
         return $http.put(
           "/api/cards/edit/" + id,
           data
-        ).then(function (sendToQueue, sendToInProg, sendToDone){
-          //specifying exact data we need, not entire sendToInProg obj
-          return sendToQueue.data || sendToInProg.data || sendToDone.data;
-        });
-      },
-      editCard: function (data, id){
-        return $http.put(
-          "/api/cards/edit" + id,
-          data
-        ).then(function (editingCard){
-          return editCard;
+        ).then(function (res){
+          return res.data;
         });
       },
       deleteCard: function (data, id){
