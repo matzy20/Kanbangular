@@ -3,13 +3,12 @@
   <head>
     <meta charset="UTF-8">
     <title>Kanbangular</title>
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
   </head>
   <body ng-app="myApp">
     <h1>Project Organizer</h1>
       <div ng-controller="MyController">
       {{ card }}
-    <section>
       <form ng-submit="newCard($event)">
         <h3>Creating New Card</h3>
         <div>Title<input type="text" ng-model="title" name="title"/></div>
@@ -18,6 +17,7 @@
         <div>Assigned To<input type="text" ng-model="assignedTo" name="assignedTo"/></div>
         <div><input type="submit" id="submit" value="Submit"/></div>
       </form>
+    <section>
       <div class="wrapper">
         <div class="column left">
           <h3>Queue</h3>
@@ -32,7 +32,7 @@
                 <button type="submit" ng-click="sendToInProg(card)">In Progress</button>
                 <button type="submit" ng-click="sendToDone(card)">Done</button>
                 <button type="submit" ng-click="remove(card)">Delete</button>
-              </li>
+                <a href="/#/cards/{{card.id}}/edit">Edit</a>
             </ul>
         </div>
         <div class="column middle">

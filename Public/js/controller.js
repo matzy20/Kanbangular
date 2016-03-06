@@ -5,11 +5,14 @@ myApp.controller('MyController', [
   'CardFactory',
   function ($scope, CardFactory) {
     $scope.cards = [];
+    $scope.user = {
+      name: 'awesome user'
+    };
     CardFactory.getCards()
       .then(function (cards){
         $scope.cards = cards.data;
       });
-    $scope.newCard = function(event){
+    $scope.newCard = function (event){
       event.preventDefault();
       if ($scope.title) {
         var data = {
@@ -32,8 +35,25 @@ myApp.controller('MyController', [
         });
       }
     };
+    $scope.editingCard = function (card){
+      event.preventDefault();
+      var data = {
+          title: $scope.title,
+          priority: $scope.priority,
+          createdBy: $scope.createdBy,
+          assignedTo: $scope.assignedTo,
+          status: $scope.status,
+        };
+      CardFactory.editCard(data, id)
+      .then(function (editingCard){
+        CardFactory.getCards()
+          .then(function (cards){
+            $scope.cards = cards.data;
+          });
+      });
+    };
     //$event is only on forms so replaced event with passing through card
-    $scope.sendToQueue = function(card){
+    $scope.sendToQueue = function (card){
       var data = {
           status: "Queue",
         };
@@ -47,7 +67,7 @@ myApp.controller('MyController', [
           });
       });
     };
-    $scope.sendToInProg = function(card){
+    $scope.sendToInProg = function (card){
       var data = {
           status: "In Progress",
         };
@@ -62,7 +82,7 @@ myApp.controller('MyController', [
           });
       });
     };
-    $scope.sendToDone = function(card){
+    $scope.sendToDone = function (card){
       var data = {
           status: "Done",
         };
@@ -76,7 +96,7 @@ myApp.controller('MyController', [
           });
       });
     };
-    $scope.remove = function(card){
+    $scope.remove = function (card){
       //ok to define data here with placeholder props
       var data = {
         title: $scope.title,

@@ -28,6 +28,14 @@ myApp.factory('CardFactory', [
           return sendToQueue.data || sendToInProg.data || sendToDone.data;
         });
       },
+      editCard: function (data, id){
+        return $http.put(
+          "/api/cards/edit" + id,
+          data
+        ).then(function (editingCard){
+          return editCard;
+        });
+      },
       deleteCard: function (data, id){
         console.log('deleted id: ', id);
         return $http.delete(
