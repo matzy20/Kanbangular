@@ -5,7 +5,15 @@ var myApp = angular.module('myApp');
 myApp
   .config(function ($routeProvider){
     $routeProvider
-    .when('/cards/:id/edit', {
+    .when('/', {
+      templateUrl: '/templates/cards.html',
+      controller: 'MyController'
+    })
+    .when('/new', {
+      templateUrl: '/templates/new-card.html',
+      controller: 'MyController'
+    })
+    .when('/:id/edit', {
       templateUrl: '/templates/edit.html',
       controller: 'MyController'
     });

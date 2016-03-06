@@ -24,7 +24,7 @@ section {
   height: 100%;
 }
 
-button {
+button, a {
   background-color: white;
   border-radius: 20%;
   font-weight: bold;

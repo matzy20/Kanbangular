@@ -7,73 +7,8 @@
   </head>
   <body ng-app="myApp">
     <h1>Project Organizer</h1>
-      <div ng-controller="MyController">
-      {{ card }}
-      <form ng-submit="newCard($event)">
-        <h3>Creating New Card</h3>
-        <div>Title<input type="text" ng-model="title" name="title"/></div>
-        <div>Priority<input type="text" ng-model="priority" name="priority"/></div>
-        <div>Created By<input type="text" ng-model="createdBy" name="createdBy"/></div>
-        <div>Assigned To<input type="text" ng-model="assignedTo" name="assignedTo"/></div>
-        <div><input type="submit" id="submit" value="Submit"/></div>
-      </form>
-    <section>
-      <div class="wrapper">
-        <div class="column left">
-          <h3>Queue</h3>
-            <ul>
-              <li class="card left" ng-repeat="card in cards | filter: {status: 'Queue'} | orderBy: '+priority'">
-                <p class="card left">ID: {{ card.id }}</p>
-                <p class="card left">Title: {{ card.title }}</p>
-                <p class="card left">Priority: {{ card.priority }}</p>
-                <p class="card left">Status: {{ card.status }}</p>
-                <p class="card left">Created By: {{ card.createdBy }}</p>
-                <p class="card left">Assigned To: {{ card.assignedTo }}</p>
-                <button type="submit" ng-click="sendToInProg(card)">In Progress</button>
-                <button type="submit" ng-click="sendToDone(card)">Done</button>
-                <button type="submit" ng-click="remove(card)">Delete</button>
-                <a href="/#/cards/{{card.id}}/edit">Edit</a>
-            </ul>
-        </div>
-        <div class="column middle">
-          <h3>In Progress</h3>
-          <div class="card middle">
-            <ul>
-              <li class="card middle" ng-repeat="card in cards | filter: {status: 'In Progress'} | orderBy: '+priority'">
-                <p class="card middle">ID: {{ card.id }}</p>
-                <p class="card middle">Title: {{ card.title }}</p>
-                <p class="card middle">Priority: {{ card.priority }}</p>
-                <p class="card middle">Status: {{ card.status }}</p>
-                <p class="card middle">Created By: {{ card.createdBy }}</p>
-                <p class="card middle">Assigned To: {{ card.assignedTo }}</p>
-                <button type="submit" ng-click="sendToQueue(card)">Queue</button>
-                <button type="submit" ng-click="sendToDone(card)">Done</button>
-                <button type="submit" ng-click="remove(card)">Delete</button>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="column right">
-          <h3>Done</h3>
-          <div class="card right">
-            <ul>
-              <li class="card right" ng-repeat="card in cards | filter: {status: 'Done'} | orderBy: '+priority'">
-                <p class="card right">ID: {{ card.id }}</p>
-                <p class="card right">Title: {{ card.title }}</p>
-                <p class="card right">Priority: {{ card.priority }}</p>
-                <p class="card right">Status: {{ card.status }}</p>
-                <p class="card right">Created By: {{ card.createdBy }}</p>
-                <p class="card right">Assigned To: {{ card.assignedTo }}</p>
-                <button type="submit" ng-click="sendToQueue(card)">Queue</button>
-                <button type="submit" ng-click="sendToInProg(card)">In Progress</button>
-                <button type="submit" ng-click="remove(card)">Delete</button>
-              </li>
-            </ul>
-        </div>
-      </div>
-    </section>
+    <a href="/#/new">Create New Card!</a>
     <div ng-view></div>
-      </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-route.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-animate.js"></script>
