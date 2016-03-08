@@ -24,7 +24,7 @@ myApp.controller('MyController', [
           console.log('new card created');
           //page updates without having to refresh
           $scope.cards = $scope.cards.concat(newCard.data);
-          //after pushing newCard resets fields back to empty string
+          //resets fields back to empty via empty string
           $scope.title = '';
           $scope.priority = '';
           $scope.createdBy = '';
@@ -40,8 +40,8 @@ myApp.controller('MyController', [
         };
       CardFactory.updateCard(data, card.id)
       .then(function(sendToQueue){
-        console.log('sendToQueue', sendToQueue);
         console.log('card ' + sendToQueue.id + ' has been updated');
+        //copy/pasted from top to set cards after being updated, so no cards are added "concat-ted", just updated
         CardFactory.getCards()
           .then(function (cards){
             $scope.cards = cards.data;
@@ -54,9 +54,7 @@ myApp.controller('MyController', [
         };
       CardFactory.updateCard(data, card.id)
       .then(function(sendToInProg){
-        console.log('sendToInProg', sendToInProg);
         console.log('card ' + sendToInProg.id + ' has been updated');
-        //copy/pasted from top to set cards after being updated, so no cards are added, just updated
         CardFactory.getCards()
           .then(function (cards){
             $scope.cards = cards.data;
@@ -69,7 +67,6 @@ myApp.controller('MyController', [
         };
       CardFactory.updateCard(data, card.id)
       .then(function(sendToDone){
-        console.log('sendToDone', sendToDone);
         console.log('card ' + sendToDone.id + ' has been updated');
         CardFactory.getCards()
           .then(function (cards){
@@ -103,6 +100,7 @@ myApp.controller('EditController', [
   'CardFactory',
   '$location',
   function ($scope, $routeParams, CardFactory, $location) {
+    //since id is part of url, using routeParams, similar to req.params
     CardFactory.getCardById($routeParams.id)
       .then(function (res){
         var card = res.data;

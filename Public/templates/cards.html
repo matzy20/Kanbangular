@@ -32,6 +32,7 @@
             <button type="submit" ng-click="sendToQueue(card)">Queue</button>
             <button type="submit" ng-click="sendToDone(card)">Done</button>
             <button type="submit" ng-click="remove(card)">Delete</button>
+            <a href="/#/{{card.id}}/edit">Edit</a>
           </li>
         </ul>
       </div>
@@ -50,6 +51,7 @@
             <button type="submit" ng-click="sendToQueue(card)">Queue</button>
             <button type="submit" ng-click="sendToInProg(card)">In Progress</button>
             <button type="submit" ng-click="remove(card)">Delete</button>
+            <a href="/#/{{card.id}}/edit">Edit</a>
           </li>
         </ul>
       </div>
