@@ -4,6 +4,9 @@ var path = require('path');
 var sequelize = require ('sequelize');
 var morgan = require('morgan');
 var methodOverride = require('method-override');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var config = require('./config');
 var bodyParser = require('body-parser');
 
 var app = express();
