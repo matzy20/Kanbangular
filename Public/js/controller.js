@@ -128,3 +128,10 @@ myApp.controller('EditController', [
     };
   }
 ]);
+
+myApp.controller('LoginController',[
+  '$scope',
+  function ($scope){
+
+  }
+]);

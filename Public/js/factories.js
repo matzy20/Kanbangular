@@ -45,4 +45,20 @@ myApp.factory('CardFactory', [
   }
 ]);
 
+myApp.factory('UserFactory', [
+  '$http',
+  function ($http){
+    return{
+    login: function (){
+      return $http({
+        method: 'GET',
+        url: "/api/login"
+      });
+    },
+
+    };
+  }
+  ]);
+
+
 

@@ -17,6 +17,26 @@ app.use(express.static(path.resolve(__dirname, 'Public')));
 
 app.use(morgan('dev'));
 app.use(methodOverride('_method'));
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(new LocalStrategy(
+{
+  passReqToCallBack: true
+},
+  function (username, password, done){
+    db.User.find({
+      where:{
+        username: username,
+        password: password
+      }
+    }).then(function(user){
+      if(!user){
+        return done(null, false);
+      }
+      return done(null, user);
+    });
+  }));
 
 app.get('/api/cards', function (req, res){
   //Card is capitalized bc it's your model
