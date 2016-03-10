@@ -1,6 +1,6 @@
 var db = require('./models');
 var express = require('express');
-var path = require('path');
+var path = require('path'); //simpler way of making paths absolute, amongst other things path-related
 var sequelize = require ('sequelize');
 var morgan = require('morgan');
 var methodOverride = require('method-override');
@@ -74,17 +74,21 @@ function isAuthenticated (req, res, next){
 }
 //applies id to user
 passport.serializeUser(function (user, done){
-  console.log(user);
-  done(null, user);
+  console.log('user', user);
+  //when serializing, we're passing on the id on user
+  done(null, user.id);
 });
 
-//able to now access user by id
+//able to now access user by id since serialized it passing id
 passport.deserializeUser(function (id, done){
-  return done(null, id);
+  console.log('id', id);
+  db.User.findById(id)
+  .then(function(user){
+    return done(null,user);
+  });
 });
 
 app.get('/api/cards',
-  isAuthenticated,
   function (req, res){
   //Card is capitalized bc it's your model
   return db.Card.findAll({}).then(function(cards){
@@ -94,6 +98,11 @@ app.get('/api/cards',
 
 app.get('/login', function (req, res){
   res.render('login');
+});
+
+app.get('/logout', function (req, res){
+  req.logout();
+  res.redirect('/');
 });
 
 app.get('/newUser', function (req, res){
@@ -134,12 +143,26 @@ app.post('/login',
   })
 );
 
-app.post('/newUser',
-  passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/login'
+app.post('/newUser', function ( req, res){
+  var PASSWORD = req.body.password;
+  //able to access confirmPassword on jade, see network > form data
+  var CONFIRMPASSWORD = req.body.confirmPassword;
+  //TODO: check to see if passwords match, if not go to /newUser
+  //TODO: check to see if username already exists
+  db.User.create({
+    username: req.body.username,
+    password: req.body.password
+  }).then(function (user){
+    if (PASSWORD === user.password){
+    res.redirect('/');
+    } else {
+
+    }
   })
-);
+    .catch(function (err){
+      console.log(err);
+    });
+});
 
 app.put('/api/cards/edit/:id', function (req, res){
   db.Card.update({
