@@ -52,7 +52,7 @@ myApp.factory('UserFactory', [
     login: function (){
       return $http({
         method: 'GET',
-        url: "/api/login"
+        url: "/api/cards",
       });
     },
 

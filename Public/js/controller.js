@@ -129,9 +129,10 @@ myApp.controller('EditController', [
   }
 ]);
 
-myApp.controller('LoginController',[
+myApp.controller('LoginController', [
   '$scope',
-  function ($scope){
+  'UserFactory',
+  function ($scope, UserFactory){
 
   }
 ]);
