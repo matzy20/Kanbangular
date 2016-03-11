@@ -143,6 +143,7 @@ app.post('/newUser', function ( req, res){
   //able to access confirmPassword on jade, see network > form data
   var CONFIRMPASSWORD = req.body.confirmPassword;
   //TODO: check to see if username already exists
+  //see last migration file, unique prop checks for this on db
   db.User.create({
     username: req.body.username,
     password: req.body.password
