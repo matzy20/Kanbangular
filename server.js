@@ -66,12 +66,6 @@ function authenticate (username, password){
   }
 }
 
-function isAuthenticated (req, res, next){
-  if (!req.isAuthenticated()){
-    return res.redirect('/login');
-  }
-  return next();
-}
 //applies id to user
 passport.serializeUser(function (user, done){
   console.log('user', user);
@@ -144,20 +138,21 @@ app.post('/login',
 );
 
 app.post('/newUser', function ( req, res){
+  console.log('in newUser', req);
   var PASSWORD = req.body.password;
   //able to access confirmPassword on jade, see network > form data
   var CONFIRMPASSWORD = req.body.confirmPassword;
-  //TODO: check to see if passwords match, if not go to /newUser
   //TODO: check to see if username already exists
   db.User.create({
     username: req.body.username,
     password: req.body.password
   }).then(function (user){
-    if (PASSWORD === user.password){
-    res.redirect('/');
+    if (PASSWORD === CONFIRMPASSWORD){
+      res.redirect('/');
     } else {
-
-    }
+        res.redirect('/newUser');
+        console.log('PASSWORD', PASSWORD);
+      }
   })
     .catch(function (err){
       console.log(err);
@@ -203,3 +198,6 @@ db.sequelize
     console.log('I\'m listening');
     });
   });
+
+  //TODO: make first page you see, the login page
+  //TODO: css where card borders are 'paintbrush'?
