@@ -96,7 +96,7 @@ app.get('/login', function (req, res){
 
 app.get('/logout', function (req, res){
   req.logout();
-  res.redirect('/');
+  res.redirect('/login');
 });
 
 app.get('/newUser', function (req, res){
@@ -152,11 +152,10 @@ app.post('/newUser', function ( req, res){
       res.redirect('/');
     } else {
         res.redirect('/newUser');
-        console.log('PASSWORD', PASSWORD);
       }
   })
     .catch(function (err){
-      console.log(err);
+      res.render('new-user');
     });
 });
 
@@ -201,4 +200,3 @@ db.sequelize
   });
 
   //TODO: make first page you see, the login page
-  //TODO: css where card borders are 'paintbrush'?

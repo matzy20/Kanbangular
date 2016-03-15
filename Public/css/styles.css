@@ -1,17 +1,21 @@
 
 * {
   box-sizing: border-box;
-  background-color: #00ffff;
+  background-color: #00b2b2;
 }
 
 h1 {
   font-family: sans-serif;
   text-align: center;
+  color: #00ffff;
+  text-shadow: 3px 3px 5px black;
 }
 
 h3 {
   font-family: sans-serif;
   text-align: left;
+  color: #00ffff;
+  text-shadow: 3px 3px 5px black;
 }
 
 html, body {
@@ -32,6 +36,11 @@ button, a {
 
 input {
   background-color: white;
+}
+
+li {
+  border-radius: 1px;
+  box-shadow: 0px 0px 0px 8px rgba(0,0,0,0.5);
 }
 
 .wrapper {
@@ -56,16 +65,17 @@ input {
 
 .card {
   font-family: sans-serif;
+  font-weight: bold;
 }
 
 .card.left {
-  background-color: #ff5050;
+  background-color: #ccffff;
 }
 
 .card.middle {
-  background-color: #ffff66;
+  background-color: #00e5e5;
 }
 
 .card.right {
-  background-color: #00ff00;
+  background-color: #00b2b2;
 }

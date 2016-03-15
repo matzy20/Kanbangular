@@ -20,14 +20,20 @@ body
         console.log('event', event);
         var PASSWORD = event.target.password.value;
         var CONFIRMPASSWORD = event.target.confirmPassword.value;
-        //event.target.confirmPassword.value - target = form
+        var USERNAME = event.target.username.value;
+        //event.target.confirmPassword.value .. target = form
         //this is how you access properties on form
-        //DOM https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement
+        //DOM docs https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement
+        //need preventDefault to cancel form submission
+        //needs to be at top, if all succeeds, submit() is catch all
         event.preventDefault();
         if (PASSWORD !== CONFIRMPASSWORD){
           alert('Passwords do not match!');
+          //resets form
           event.target.reset();
         } else {
+          //submits form to server which takes you to index
           event.target.submit();
           }
       }
+

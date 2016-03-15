@@ -128,11 +128,3 @@ myApp.controller('EditController', [
     };
   }
 ]);
-
-myApp.controller('LoginController', [
-  '$scope',
-  'UserFactory',
-  function ($scope, UserFactory){
-
-  }
-]);

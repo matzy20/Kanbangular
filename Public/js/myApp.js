@@ -21,6 +21,5 @@ myApp
   .run([
     '$rootScope',
     function ($rootScope){
-      console.log('Edit your card! ... please?');
     }
   ]);
