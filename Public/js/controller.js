@@ -4,7 +4,6 @@ myApp.controller('MyController', [
   '$scope',
   'CardFactory',
   function ($scope, CardFactory) {
-    $scope.cards = [];
     CardFactory.getCards()
       .then(function (cards){
         $scope.cards = cards.data;
